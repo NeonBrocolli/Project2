@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :warehouses, only: [:new, :create, :show, :destroy]
+  resources :warehouses
 
   # resources :events
 

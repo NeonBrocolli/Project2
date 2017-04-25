@@ -10,7 +10,10 @@
       <div class="caption">
         <p><a href="/login" class="btn btn-primary" role="button">Events</a>
         <a href="/login" class="btn btn-default" role="button">Login</a>
-        <a href="/users/new" class="btn btn-default" role="button">Signup</a> </p>
+        <a href="/users/new" class="btn btn-default" role="button">Signup</a>
+          <% if current_user && current_user.is_owner %><button class="btn btn-default"><% end %>
+          <%= link_to 'Post a Warehouse', new_warehouse_path if current_user && current_user.is_owner %></button>
+        </p>
       </div>
     </div>
 
