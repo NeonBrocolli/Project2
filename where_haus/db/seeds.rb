@@ -16,7 +16,15 @@ users = User.create([
     email:"Blepo@gmail.com",
     phone_number: "323-696-1337",
     company:"Bleplium.co",
-    password:"Bleptastic"}
+    is_owner: false,
+    password:"Bleptastic"},
+    {firstname:"Owner",
+    lastname:"Joe",
+    is_owner: true,
+    email:"owner@gmail.com",
+    phone_number: "323-696-1337",
+    company:"Bleplium.co",
+    password:"abc123"}
   ])
 
 events = Event.create([

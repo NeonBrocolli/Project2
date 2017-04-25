@@ -10,23 +10,37 @@
   </head>
 
   <body>
-<nav class="navbar navbar-default dropdown">
-<div class="col-sm-2">
-  <h4 class="text-right">Welcome</h4>
-</div>
-
-<div class="col-sm-2">
- <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    Menu
-    <span class="caret"></span>
-  </button>
-    <ul class="col-sm-2 dropdown-menu" aria-labelledby="dropdownmenu3">
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Profile", users_path %></li>
-      <li><%= link_to "Sign Up", new_user_path %></li>
-      <li><%= link_to "Login", login_path %></li>
-    </ul>
-</div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">
+        <% if current_user %>
+          Welcome, <%= current_user.firstname %>
+        <% else %>
+          Welcome!
+        <% end %>
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Home", root_path %></li>
+          <% if current_user %>
+        <li><%= link_to 'Events', user_path(current_user) if current_user %></li>
+        <li><%= link_to 'Venues for Rent', user_path(current_user) if current_user.is_owner %></li>
+        <li><%= link_to 'Log Out', session_path('dummy'), method: :delete %></li>
+          <% else %>
+        <li><%= link_to 'Log In', login_path %></li>
+        <li><%= link_to 'Sign Up', new_user_path %></li>
+          <% end %>
+      </ul>
+    </div>
+  </div>
 </nav>
     <%= yield %>
   </body>

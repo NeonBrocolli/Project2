@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
-  # resources :warehouses
+  resources :warehouses, only: [:new, :create, :show, :destroy]
 
   # resources :events
 
@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/login', to: 'sessions#new'
+  get '/logout', to: 'sessions#destroy'
 end
