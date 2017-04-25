@@ -1,6 +1,6 @@
 <h1>NEW USER SIGN UP</h1>
 
-<%= form_for :user do |f| %>
+<%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div class="error_messages">
       <h2>Invalid</h2>

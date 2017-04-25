@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>WhereHaus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +10,24 @@
   </head>
 
   <body>
+<nav class="navbar navbar-default dropdown">
+<div class="col-sm-2">
+  <h4 class="text-right">Welcome</h4>
+</div>
+
+<div class="col-sm-2">
+ <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Menu
+    <span class="caret"></span>
+  </button>
+    <ul class="col-sm-2 dropdown-menu" aria-labelledby="dropdownmenu3">
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Profile", users_path %></li>
+      <li><%= link_to "Sign Up", new_user_path %></li>
+      <li><%= link_to "Login", login_path %></li>
+    </ul>
+</div>
+</nav>
     <%= yield %>
   </body>
 </html>
