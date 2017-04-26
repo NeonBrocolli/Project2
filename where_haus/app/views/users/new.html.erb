@@ -35,6 +35,11 @@
     <%= f.label :is_owner %>
     <%= f.check_box :is_owner %>
   </div>
+  <%= image_tag(:image) %>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
   <div class="field">
     <%= f.label :password %>
     <%= f.password_field :password %>
@@ -43,7 +48,7 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="actions"><%= f.submit %> <a href="/"><button>Back</button></a></div>
+  <%= f.submit "Sign Up", class: "btn btn-default" %> <%= link_to 'Home', root_path, class: "btn btn-default" %>
 <% end %>
 
 

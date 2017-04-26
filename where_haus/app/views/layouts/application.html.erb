@@ -31,8 +31,8 @@
       <ul class="nav navbar-nav">
         <li><%= link_to "Home", root_path %></li>
           <% if current_user %>
-        <li><%= link_to 'Events', user_path(current_user) if current_user %></li>
-        <li><%= link_to 'Warehouses', user_path(current_user) if current_user && current_user.is_owner %></li>
+        <li><%= link_to 'Events', root_path if current_user != current_user.is_owner %></li>
+        <li><%= link_to 'Warehouses', warehouses_path if current_user && current_user.is_owner %></li>
         <li><%= link_to 'Log Out', session_path('dummy'), method: :delete %></li>
           <% else %>
         <li><%= link_to 'Log In', login_path %></li>

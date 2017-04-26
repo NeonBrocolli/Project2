@@ -1,1 +1,39 @@
 <h1>warehouse Index</h1>
+
+<ul>
+<% @warehouses.each do |w| %>
+    <h4><%= w.venue_name %></h4>
+    <li><%= w.location %></li>
+    <li>Number of Exits: <%= w.num_exits %></li>
+    <li>
+      Max Occ:<% if w.max_occupants == false %>
+        0
+      <% else %>
+        <%= w.max_occupants %>
+      <% end %>
+    </li>
+    <li>
+      Square feet:<% if w.square_feet == false %>
+        0
+      <% else %>
+        <%= w.max_occupants %>
+      <% end %>
+    </li>
+    <li>
+      Fire Alarm:<% if w.fire_alarm == false %>
+        None
+      <% else %>
+        Active
+      <% end %>
+    </li>
+    <li>Description: <%= w.description %></li>
+    <%= link_to raw('<button class="btn btn-warning ">Edit</button>'), edit_warehouse_path(w)%>
+    <%= link_to 'Destroy', w, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } if current_user %>
+    <% end %>
+</ul>
+
+<%= link_to 'Back', :back, class: "btn btn-default" %>
+
+<a href="/warehouses/new"><button class="btn btn-default">New</button></a>
+
+

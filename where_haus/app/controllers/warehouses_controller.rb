@@ -1,15 +1,20 @@
 class WarehousesController < ApplicationController
   # before_action :set_warehouses, only: [:new, :create, :show, :edit, :]
-  def index
-    @warehouses = Warehouse.all
-  end
-
   def new
     @warehouse = Warehouse.new
   end
 
+  def index
+    @warehouses = Warehouse.all.order(:id)
+  end
+
+  def show
+    @warehouse = Warehouse.find(params[:id])
+  end
+
   def create
     @warehouse = Warehouse.new(warehouse_params)
+    @warehouse.user = current_user
     if @warehouse.save
       flash[:notice] = "Added"
       redirect_to warehouses_path
@@ -18,29 +23,31 @@ class WarehousesController < ApplicationController
     end
   end
 
-  def show
+  def edit
     @warehouse = Warehouse.find(params[:id])
   end
 
-  # def edit
-  #   @warehouse = Warehouse.find(params[:id])
-  # end
+  def update
+    @warehouse = Warehouse.find(params[:id])
+    if @warehouse.update_attributes(warehouse_params)
+      redirect_to warehouses_path
+    else
+      render :edit
+    end
+  end
 
-  # def update
-  #   @warehouse = Warehouse.find(params[:id])
-  # end
-
-  # def destroy
-  #   @warehouse = Warehouse.find(params[:id])
-  # end
+  def destroy
+      @warehouse = Warehouse.find(params[:id])
+    @warehouse.destroy
+    respond_to do |format|
+      format.html { redirect_to warehouses_path, notice: 'warehouse deleted.' }
+      format.json { head :no_content }
+    end
+  end
 
 private
 
-  # def set_warehouses
-  #   @warehouse = Warehouse.find(params[:id])
-  # end
-
   def warehouse_params
-    params.require(:warehouse).permit(:venue_name, :location, :num_exits, :square_feet, :fire_alarm)
+    params.require(:warehouse).permit(:venue_name, :location, :num_exits, :max_occupants, :square_feet, :fire_alarm, :description, :user_id)
   end
 end

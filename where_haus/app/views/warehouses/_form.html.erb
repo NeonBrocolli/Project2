@@ -1,16 +1,5 @@
-<h1>Post Your Warehouse!</h1>
 
 <%= form_for @warehouse do |f| %>
-  <% if @warehouse.errors.any? %>
-    <div class="error_messages">
-      <h2>Invalid</h2>
-      <ul>
-        <% for message in @warehouse.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="field">
     <%= f.label :venue_name %>
     <%= f.text_field :venue_name %>
@@ -40,5 +29,6 @@
     <%= f.file_field :image %>
   </div>
 <br>
+<%= f.submit %>
 <%= link_to 'Back', :back, class: "btn btn-default" %>
 <% end %>

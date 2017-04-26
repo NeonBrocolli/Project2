@@ -4,12 +4,14 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
 
-  resources :warehouses
+  resources :warehouses do
+    resources :events
+  end
 
   # resources :events
 
   # post 'users/new', to: 'users#create', as: :profile
-  # get 'users/new', to: 'users#new'
+  # get '/users', to: 'users#index', as: :profile
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/login', to: 'sessions#new'
