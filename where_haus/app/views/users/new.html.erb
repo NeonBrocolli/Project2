@@ -21,7 +21,11 @@
   </div>
   <div class="field">
     <%= f.label :email %>
-    <%= f.email_field("user", "address") :email %>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %>
+    <%= f.phone_field :phone_number %>
   </div>
   <div class="field">
     <%= f.label :company %>
@@ -39,7 +43,7 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <div class="actions"><%= f.submit %></div>
+  <div class="actions"><%= f.submit %> <a href="/"><button>Back</button></a></div>
 <% end %>
 
-<button class="btn btn-default"><%= link_to 'Back', root_path %></button>
+

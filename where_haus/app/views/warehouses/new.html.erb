@@ -35,7 +35,12 @@
     <%= f.label :description %>
     <%= f.text_field :description %>
   </div>
-  <div class="actions"><%= f.submit %></div>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+<br>
+<p>
+  <div class="actions"><%= f.submit %> <a href="/"><button>Back</button></a></div>
+</p>
 <% end %>
-
-<button class="btn btn-default"><%= link_to 'Back', root_path %></button>
