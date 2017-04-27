@@ -1,5 +1,15 @@
 
 <%= form_for @user do |f| %>
+  <% if @user.errors.any? %>
+    <div class="error_messages">
+      <h2>Invalid</h2>
+      <ul>
+        <% for message in @user.errors.full_messages %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :firstname %>
     <%= f.text_field :firstname %>
@@ -24,7 +34,6 @@
     <%= f.label :is_owner %>
     <%= f.check_box :is_owner %>
   </div>
-  <%= image_tag(:image) %>
   <div class="field">
     <%= f.label :image %>
     <%= f.file_field :image %>
@@ -37,5 +46,5 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <%= f.submit "Sign Up", class: "btn btn-default" %> <%= link_to 'Home', root_path, class: "btn btn-default" %>
+  <%= f.submit "submit", class: "btn btn-success" %> <%= link_to 'Home', root_path, class: "btn btn-default" %>
 <% end %>

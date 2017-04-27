@@ -38,7 +38,6 @@
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
-<br>
-<%= f.submit %>
-<%= link_to 'Back', :back, class: "btn btn-default" %>
+<%= f.submit 'Submit', class: "btn btn-success" %> &nbsp;
+<%= link_to 'Warehouses', warehouses_path, class: "btn btn-default" %>
 <% end %>

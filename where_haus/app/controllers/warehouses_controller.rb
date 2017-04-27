@@ -1,15 +1,11 @@
 class WarehousesController < ApplicationController
 
-  def new
-    @warehouse = Warehouse.new
-  end
-
   def index
     @warehouses = Warehouse.all.order(:id)
   end
 
-  def show
-    @warehouse = Warehouse.find(params[:id])
+  def new
+    @warehouse = Warehouse.new
   end
 
   def create
@@ -21,6 +17,10 @@ class WarehousesController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @warehouse = Warehouse.find(params[:id])
   end
 
   def edit

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "Signed up!"
@@ -20,9 +20,12 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+      @user = User.find(params[:id])
     @user.destroy
-    redirect_to users_path
+    respond_to do |format|
+      format.html { redirect_to users_path, notice: 'User deleted.' }
+      format.json { head :no_content }
+    end
   end
 
 private
