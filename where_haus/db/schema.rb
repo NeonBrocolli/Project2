@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425204843) do
+ActiveRecord::Schema.define(version: 20170427021039) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,12 @@ ActiveRecord::Schema.define(version: 20170425204843) do
     t.integer  "price"
     t.integer  "user_id"
     t.integer  "warehouse_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
     t.index ["warehouse_id"], name: "index_events_on_warehouse_id", using: :btree
   end
@@ -49,11 +53,15 @@ ActiveRecord::Schema.define(version: 20170425204843) do
     t.integer  "num_exits"
     t.integer  "max_occupants"
     t.integer  "square_feet"
-    t.boolean  "fire_alarm",    default: true
+    t.boolean  "fire_alarm"
     t.string   "description"
     t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.index ["user_id"], name: "index_warehouses_on_user_id", using: :btree
   end
 

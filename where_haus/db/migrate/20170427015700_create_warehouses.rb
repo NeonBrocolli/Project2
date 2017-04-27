@@ -6,9 +6,10 @@ class CreateWarehouses < ActiveRecord::Migration[5.0]
       t.integer :num_exits
       t.integer :max_occupants
       t.integer :square_feet
-      t.boolean :fire_alarm, default: true
+      t.boolean :fire_alarm
       t.string :description
       t.references :user, foreign_key: true
+      t.attachment :image
 
       t.timestamps
     end

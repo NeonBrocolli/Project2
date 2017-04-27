@@ -6,6 +6,7 @@ class CreateEvents < ActiveRecord::Migration[5.0]
       t.integer :price
       t.references :user, foreign_key: true
       t.references :warehouse, foreign_key: true
+      t.attachment :image
 
       t.timestamps
     end
