@@ -4,7 +4,7 @@
       <div class="jumbotron">
         <div class="container">
           <% img = ['test.png', 'test2.jpg', 'warehouse2.jpg', 'warehouse3.jpg'].sample %>
-          <%= image_tag(img, size: "1000x300", class: "img-responsive") %>
+          <%= image_tag(img, :width => 900, :height => 300, class: "img-responsive") %>
         </div>
       </div>
       <div class="caption">
@@ -22,7 +22,7 @@
 <div class="row">
   <div class="col-xs-6 col-md-3">
     <a href="#" class="thumbnail">
-    <%= image_tag @warehouses.image.url %>
+      <img src="" alt="">
     </a>
   </div>
   <div class="col-xs-6 col-md-3">
