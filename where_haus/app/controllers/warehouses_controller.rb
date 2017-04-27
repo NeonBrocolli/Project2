@@ -1,11 +1,11 @@
 class WarehousesController < ApplicationController
 
-  def index
-    @warehouses = Warehouse.all.order(:id)
-  end
-
   def new
     @warehouse = Warehouse.new
+  end
+
+  def index
+    @warehouses = Warehouse.all.order(:id)
   end
 
   def create
