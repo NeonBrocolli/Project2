@@ -1,16 +1,5 @@
-<h1>NEW USER SIGN UP</h1>
 
 <%= form_for @user do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="field">
     <%= f.label :firstname %>
     <%= f.text_field :firstname %>
@@ -48,8 +37,5 @@
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %>
   </div>
-  <%= f.submit "Sign Up", class: "btn btn-default" %>
-  <%= link_to 'Home', root_path, class: "btn btn-default" %>
+  <%= f.submit "Sign Up", class: "btn btn-default" %> <%= link_to 'Home', root_path, class: "btn btn-default" %>
 <% end %>
-
-

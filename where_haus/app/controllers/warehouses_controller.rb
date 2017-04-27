@@ -1,5 +1,5 @@
 class WarehousesController < ApplicationController
-  # before_action :set_warehouses, only: [:new, :create, :show, :edit, :]
+
   def new
     @warehouse = Warehouse.new
   end
@@ -48,6 +48,7 @@ class WarehousesController < ApplicationController
 private
 
   def warehouse_params
-    params.require(:warehouse).permit(:venue_name, :location, :num_exits, :max_occupants, :square_feet, :fire_alarm, :description, :user_id)
+    params.require(:warehouse).permit(:image,:venue_name, :location, :num_exits,
+      :max_occupants, :square_feet, :fire_alarm, :description, :user_id)
   end
 end
