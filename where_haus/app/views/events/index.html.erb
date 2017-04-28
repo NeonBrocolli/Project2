@@ -1,7 +1,5 @@
-<h1>All Your Events</h1>
-
 <% @events.each do |e| %>
-    <%= e.event_name %>
+<h1><%= e.event_name %></h1>
   <ul>
     <li><%= e.warehouse.venue_name %></li>
     <li><%= e.date %></li>

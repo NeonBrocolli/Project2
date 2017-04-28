@@ -27,9 +27,6 @@
         <%= e.label :image %>
         <%= e.file_field :image %>
       </div>
-      <div>hello!
-      <%= warehouse_events_path(@warehouse) %>
-      </div>
     <%= e.submit 'Submit', class: "btn btn-success" %> &nbsp;
     <%= link_to 'events', warehouse_events_path(@warehouse), class: "btn btn-default" %>
     <% end %>
