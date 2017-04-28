@@ -39,11 +39,9 @@ class WarehousesController < ApplicationController
 
   def destroy
     @warehouse = Warehouse.find(params[:id])
+    @warehouse.event.destroy
     @warehouse.destroy
-    respond_to do |format|
-      format.html { redirect_to warehouses_path, notice: 'warehouse deleted.' }
-      format.json { head :no_content }
-    end
+    redirect_to warehouses_path
   end
 
 private

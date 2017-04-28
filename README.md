@@ -19,7 +19,8 @@ It is a way for warehouse owners to make use of any unused warehouses and for ev
 * HTML5
 
 <h1>iii. The App</h1>
-<h4>Link: https://where-haus.herokuapp.com/</h4>
+<h4><a href="https://where-haus.herokuapp.com/">HERO-KUn</a></h4>
+<h4><a href="https://trello.com/b/w8jgQiz5/where-haus-app">Tralla-le-LLo</a></h4>
 
 <h1>iv. Unsolved/Planned</h1>
 
