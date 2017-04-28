@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-Event.destroy_all
+
 Warehouse.destroy_all
 
 users = User.create([

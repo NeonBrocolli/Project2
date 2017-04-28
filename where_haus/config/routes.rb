@@ -1,19 +1,15 @@
 Rails.application.routes.draw do
   root 'pages#home'
 
-  resources :users
+  resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
 
   resources :warehouses do
-    resources :events
+    resources :events, shallow: true
   end
 
-  # resources :events
-
-  # post 'users/new', to: 'users#create', as: :profile
-  # get '/users', to: 'users#index', as: :profile
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/profile', to: 'users#show', as: :profile
+  patch '/profile', to: 'users#update'
   get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
 end

@@ -1,1 +1,35 @@
-<%= render 'form' %>
+<h1><%= @warehouse.venue_name %></h1>
+<%= image_tag @warehouse.image.url %>
+<br>
+<li>Number of Exits: <%= @warehouse.num_exits %></li>
+<li>
+  Max Occ:<% if @warehouse.max_occupants == false %>
+    0
+  <% else %>
+    <%= @warehouse.max_occupants %>
+  <% end %>
+</li>
+<li>
+  Square feet:<% if @warehouse.square_feet == false %>
+    0
+  <% else %>
+    <%= @warehouse.max_occupants %>
+  <% end %>
+</li>
+<li>
+  Fire Alarm:<% if @warehouse.fire_alarm == false %>
+    None
+  <% else %>
+    Active
+  <% end %>
+</li>
+<br>
+<div class="container">
+  location: <%= @warehouse.location %>
+</div>
+<br>
+<div div class="container">
+  Description: <%= @warehouse.description %>
+</div>
+<br>
+<%= link_to 'Home', root_path, class: "btn btn-primary" %>

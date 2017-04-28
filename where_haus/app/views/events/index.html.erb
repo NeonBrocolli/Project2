@@ -1,0 +1,17 @@
+<h1>All Your Events</h1>
+
+<% @events.each do |e| %>
+    <%= e.event_name %>
+  <ul>
+    <li><%= e.warehouse.venue_name %></li>
+    <li><%= e.date %></li>
+    <li><%= e.price %></li>
+  </ul>
+    <%= image_tag e.image.url, size: "800x500"%>
+    <%= link_to raw('<button class="btn btn-warning ">Edit</button>'), edit_event_path(e)%>
+    <%= link_to 'Destroy', e, method: :delete,
+    class: "btn btn-danger", data: { confirm: 'Are you sure?' } if current_user %>
+<% end %>
+<br>
+<%= link_to 'Home', root_path, class: "btn btn-primary" %>
+<%= link_to 'New', new_warehouse_event_path, class: "btn btn-default" %>

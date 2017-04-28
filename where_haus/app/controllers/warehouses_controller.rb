@@ -1,18 +1,19 @@
 class WarehousesController < ApplicationController
-
-  def new
-    @warehouse = Warehouse.new
-  end
+  before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @warehouses = Warehouse.all.order(:id)
+  end
+
+  def new
+    @warehouse = Warehouse.new
   end
 
   def create
     @warehouse = Warehouse.create(warehouse_params)
     @warehouse.user = current_user
     if @warehouse.save
-      flash[:notice] = "Added"
+      flash[:notice] = "Added Venue"
       redirect_to warehouses_path
     else
       render :new
@@ -37,7 +38,7 @@ class WarehousesController < ApplicationController
   end
 
   def destroy
-      @warehouse = Warehouse.find(params[:id])
+    @warehouse = Warehouse.find(params[:id])
     @warehouse.destroy
     respond_to do |format|
       format.html { redirect_to warehouses_path, notice: 'warehouse deleted.' }
@@ -50,5 +51,9 @@ private
   def warehouse_params
     params.require(:warehouse).permit(:venue_name, :location, :num_exits,
       :max_occupants, :square_feet, :fire_alarm, :description, :user_id,:image)
+  end
+
+  def authorize
+    redirect_to login_path, alert: 'Uncool Man!' if current_user.nil?
   end
 end

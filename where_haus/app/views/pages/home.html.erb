@@ -1,45 +1,47 @@
-<div class="row">
-
-    <div class="thumbnail">
-      <div class="jumbotron">
-        <div class="container">
-          <% img = ['test.png', 'test2.jpg', 'warehouse2.jpg', 'warehouse3.jpg'].sample %>
-          <%= image_tag(img, :width => 900, :height => 300, class: "img-responsive") %>
-        </div>
-      </div>
-      <div class="caption">
-        <p><a href="#" class="btn btn-primary" role="button">Events</a>
-        <% unless current_user && current_user.is_owner %><a href="/login" class="btn btn-default" role="button">Login</a><% end %>
-        <% unless current_user && current_user.is_owner %><a href="/users/new" class="btn btn-default" role="button">Signup</a><% end %>
-        <% if current_user && current_user.is_owner %><%= link_to 'Log Out', session_path('dummy'), method: :delete, class: "btn btn-default" %><% end %>
-          <% if current_user && current_user.is_owner %><a href="/warehouses/new" class="btn btn-default">Post a Warehouse</a><% end %>
-        </p>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <title>Homepage</title>
+</head>
+<body>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <div class="page-header">
+      <h1>Where-haus!</h1>
     </div>
-
+    <p>Search for a warehouse for your next event.</p>
+  </div>
+    <div class="thumbnail">
+      <% img = ['test.png', 'test2.jpg', 'warehouse2.jpg', 'warehouse3.jpg'].sample %>
+      <%= image_tag(img, width: "100%", class: "img-responsive") %>
+    </div>
 </div>
-<table class="container">
+  <nav class="nav navbar-fluid">
+    <p>
+    <% if current_user == nil %><a href="/login" class="btn btn-danger" role="button">Login</a><% end %>
+    <% if current_user == nil %><a href="/users/new" class="btn btn-default" role="button">Signup</a><% end %>
+    <% if current_user %><%= link_to 'Log Out', session_path('dummy'), method: :delete, class: "btn btn-default" %><% end %>
+    <% if current_user && current_user.is_owner %><a href="/warehouses/new" class="btn btn-default">Post a Warehouse</a><% end %>
+    <%= flash[:notice] %>
+    </p>
+  </nav>
 <div class="row">
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="" alt="">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="" alt="">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="" alt="">
-    </a>
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <a href="#" class="thumbnail">
-      <img src="" alt="">
-    </a>
+  <div class="container">
+    <% @warehouses.each do |w| %>
+    <h4><u>Warehouse:</u> <%= w.venue_name %></h4>
+      <% if w.event %>
+        <%= link_to w.event.event_name, event_path(w.event), class: "btn btn-default" %>
+      <% else !w.event %>
+        <h4>no events</h4>
+        <%= link_to "Add Event?", new_warehouse_event_path(w), class: "btn btn-default" if current_user %>
+      <% end %>
+      <%= image_tag w.image.url, :height => 200, class: "img-responsive" %>
+    <% end %>
   </div>
 </div>
-
-</table>
+</body>
+</html>

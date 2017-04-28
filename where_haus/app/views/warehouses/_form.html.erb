@@ -1,43 +1,52 @@
-
-<%= form_for @warehouse do |f| %>
-  <% if @warehouse.errors.any? %>
-    <div class="error_messages">
-      <h2>Invalid</h2>
-      <ul>
-        <% for message in @warehouse.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :venue_name %>
-    <%= f.text_field :venue_name %>
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-4">
+    <%= form_for @warehouse do |f| %>
+      <% if @warehouse.errors.any? %>
+        <div class="error_messages">
+          <h2>Invalid</h2>
+          <ul>
+            <% for message in @warehouse.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :venue_name %>
+        <%= f.text_field :venue_name %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :location %>
+        <%= f.text_field :location %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :num_exits %>
+        <%= f.number_field :num_exits %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :max_occupants %>
+        <%= f.number_field :max_occupants %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :fire_alarm %>
+        <%= f.check_box :fire_alarm %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+      </div>
+      <br>
+      <div class="field">
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+      </div>
+    <%= f.submit 'Submit', class: "btn btn-success" %> &nbsp;
+    <%= link_to 'Warehouses', warehouses_path, class: "btn btn-default" %>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :num_exits %>
-    <%= f.number_field :num_exits %>
-  </div>
-  <div class="field">
-    <%= f.label :max_occupants %>
-    <%= f.number_field :max_occupants %>
-  </div>
-  <div class="field">
-    <%= f.label :fire_alarm %>
-    <%= f.check_box :fire_alarm %>
-  </div>
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
-<%= f.submit 'Submit', class: "btn btn-success" %> &nbsp;
-<%= link_to 'Warehouses', warehouses_path, class: "btn btn-default" %>
-<% end %>
+</div>
